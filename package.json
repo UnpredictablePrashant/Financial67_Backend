@@ -18,6 +18,11 @@
   },
   "homepage": "https://github.com/UnpredictablePrashant/Financial67_Backend#readme",
   "dependencies": {
-    "express": "^4.18.2"
+    "crypto": "^1.0.1",
+    "dotenv": "^16.0.3",
+    "env": "^0.0.2",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.4"
   }
 }
