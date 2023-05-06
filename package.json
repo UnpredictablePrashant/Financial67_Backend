@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/UnpredictablePrashant/Financial67_Backend#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "crypto": "^1.0.1",
     "dotenv": "^16.0.3",
     "env": "^0.0.2",

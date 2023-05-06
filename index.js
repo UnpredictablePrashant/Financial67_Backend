@@ -3,12 +3,16 @@ const express = require('express');
 const userRoutes = require('./routes/user.routes')
 const checkRoutes=require("./routes/check.routes")
 const dbconnect = require("./conn/db.conn")
+const balanceSheetRoutes = require('./routes/balanceSheetRoutes');
+const cors = require("cors");
 
 const app = express();
 app.use(express.json());
+app.use(cors())
 
 app.use('/', userRoutes)
 app.use('/hello', checkRoutes)
+app.use('/balancesheet', balanceSheetRoutes);
 
 app.listen(process.env.PORT||3001,()=>{
     dbconnect()

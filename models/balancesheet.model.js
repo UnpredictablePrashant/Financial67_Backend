@@ -1,7 +1,7 @@
-const express = require("mongoose");
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const balanceSheetSchema = new SchemaType({
+const balanceSheetSchema = new Schema({
     companyId: {
         type: String,
     },
@@ -116,6 +116,39 @@ const balanceSheetSchema = new SchemaType({
             },
         },
     ],
+    total_current_assets: {
+        type: Number,
+    },
+    total_non_current_assets: {
+        type: Number,
+    },
+    total_assets: {
+        type: Number,
+    },
+    total_current_liabilities: {
+        type: Number,
+    },
+    total_non_current_liabilities: {
+        type: Number,
+    },
+    total_liabilities: {
+        type: Number,
+    },
+    total_shareholders_equity: {
+        type: Number,
+    },
+    total_liabilities_and_shareholders_equity: {
+        type: Number,
+    },
+    working_capital_assets: {
+        type: Number,
+    },
+    working_capital_liabilities: {
+        type: Number,
+    },
+    net_working_capital: {
+        type: Number,
+    },
 });
 
 const BalanceSheet = mongoose.model("balanceSheet", balanceSheetSchema);
