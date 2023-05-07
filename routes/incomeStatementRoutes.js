@@ -1,9 +1,19 @@
 const express = require("express");
 const router = express.Router();
-const { createIncomeStatement, getAllIncomeStatements } = require("../controllers/incomeStatement.controller");
+const { createIncomeStatement, getAllIncomeStatements, getIncomeStatementByCompanyId,deleteIncomeStatementByCompanyId, updateIncomeStatementByCompanyId } = require("../controllers/incomeStatement.controller");
 
 router.post("/create", createIncomeStatement);
 router.get("/", getAllIncomeStatements);
+router.get("/:companyId",getIncomeStatementByCompanyId);
+
+// deleete an income statement by companyid
+router.delete("/:companyId", deleteIncomeStatementByCompanyId);
+
+
+//update by company id
+
+router.patch('/income-statement/:companyId', updateIncomeStatementByCompanyId);
+
 
 module.exports = router;
 
