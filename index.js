@@ -5,6 +5,7 @@ const checkRoutes = require("./routes/check.routes");
 const dbconnect = require("./conn/db.conn");
 const balanceSheetRoutes = require('./routes/balanceSheetRoutes');
 const incomeStatementRoutes = require('./routes/incomeStatementRoutes');
+const cashflowStatementRoutes = require('./routes/cashflowStatement.routes');
 const cors = require("cors");
 
 const app = express();
@@ -15,6 +16,7 @@ app.use('/', userRoutes);
 app.use('/hello', checkRoutes);
 app.use('/balancesheet', balanceSheetRoutes);
 app.use('/incomestatement', incomeStatementRoutes);
+app.use('/cashflowstatement', cashflowStatementRoutes);
 
 app.listen(process.env.PORT || 3001, () => {
   dbconnect();
