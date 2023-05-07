@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const {
-    createBalanceSheet,
-    getAllBalanceSheets,
-    getBalanceSheetById,
-    updateBalanceSheet,
-    deleteBalanceSheet,
-  } = require("../controllers/balanceSheetController");
-  
+  createBalanceSheet,
+  getAllBalanceSheets,
+  getBalanceSheetById,
+  updateBalanceSheet,
+  deleteBalanceSheet,
+} = require("../controllers/balanceSheet.controller");
+
 router.post("/create", createBalanceSheet);
 router.get("/", getAllBalanceSheets);
 router.get("/:id", getBalanceSheetById);
