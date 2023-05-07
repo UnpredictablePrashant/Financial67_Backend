@@ -6,3 +6,5 @@ router.post("/create", createIncomeStatement);
 router.get("/", getAllIncomeStatements);
 
 module.exports = router;
+
+//routes
