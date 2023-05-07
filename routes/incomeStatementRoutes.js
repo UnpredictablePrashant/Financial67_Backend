@@ -12,7 +12,7 @@ router.delete("/:companyId", deleteIncomeStatementByCompanyId);
 
 //update by company id
 
-router.patch('/income-statement/:companyId', updateIncomeStatementByCompanyId);
+router.put('/:companyId', updateIncomeStatementByCompanyId);
 
 
 module.exports = router;

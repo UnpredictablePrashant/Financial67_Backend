@@ -86,9 +86,7 @@ exports.getIncomeStatementByCompanyId = async (req, res) => {
       const options = { new: true };
   
       const incomeStatement = await IncomeStatement.findOneAndUpdate(
-        { companyId },
-        updates,
-        options
+        { companyId: companyId }, updates, { new: true }
       );
   
       if (!incomeStatement) {
