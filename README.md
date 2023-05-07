@@ -1,7 +1,7 @@
 # Financial67_Backend
 
 ## Checklist
-Income Statement
+### Income Statement
  - [x] Model - Anjani
  - Controllers
    - [x] GET - Anjani
@@ -9,7 +9,7 @@ Income Statement
    - [x] POST - Anjani
    - [ ] PUT
    - [ ] DELETE
-Balance Sheet 
+### Balance Sheet 
 - [x] Model - Yash
  - Controllers
    - [x] GET - Mohit
@@ -17,7 +17,7 @@ Balance Sheet
    - [x] POST - Mohit
    - [ ] PUT
    - [ ] DELETE
-Cash Flow
+### Cash Flow
 - [x] Model - Chandrasekhar
 - Controllers
    - [ ] GET
@@ -25,7 +25,7 @@ Cash Flow
    - [ ] POST
    - [ ] PUT
    - [ ] DELETE
-Confidential
+### Confidential
 - [x] Model - Mohit
 - Controllers
    - [ ] GET
@@ -33,7 +33,7 @@ Confidential
    - [ ] POST
    - [ ] PUT
    - [ ] DELETE
-User
+### User
 - [x] Model - Mohit
 - Controllers
    - [x] GET - Mohit
@@ -42,7 +42,7 @@ User
    - [x] POST - Mohit
    - [ ] PUT
    - [ ] DELETE
-Company
+### Company
 - [x] Model - HV
 - Controllers
    - [ ] GET
