@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const balanceSheetSchema = new Schema({
   companyId: {
     type: String,
+    unique: true
   },
   year: {
     type: Number,

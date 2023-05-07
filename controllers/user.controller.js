@@ -81,6 +81,47 @@ async function getUserById(req,res){
     .then(result => res.send(result))
     .catch(err => res.send({message: "something went wrong"}))
 }
+async function updateUserById(req, res) {
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    );
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    res.status(400).json({ message: "Error updating user by ID", error });
+  }
+}
 
-module.exports= {UserRegistration,getAllUser,getUserById,UserLogin}
+async function deleteUserById(req, res) {
+  try {
+    await User.findByIdAndRemove(req.params.id);
+    res.status(200).json({ message: "User deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Error deleting user by ID", error });
+  }
+}
 
+async function getUserByEmail(req, res) {
+  try {
+    const userEmail = req.params.email;
+    const user = await User.findOne({ email: userEmail });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: "Error getting user by email", error });
+  }
+}
+
+module.exports = {
+  UserRegistration,
+  getAllUser,
+  getUserById,
+  UserLogin,
+  updateUserById, // Added function
+  deleteUserById, // Added function
+  getUserByEmail, // Added function
+};
