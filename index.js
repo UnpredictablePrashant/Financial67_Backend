@@ -5,12 +5,15 @@ const checkRoutes = require("./routes/check.routes");
 const dbconnect = require("./conn/db.conn");
 const balanceSheetRoutes = require('./routes/balanceSheetRoutes');
 const incomeStatementRoutes = require('./routes/incomeStatementRoutes');
+const companyRoutes = require('./routes/company.route')
+
 const cors = require("cors");
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
+app.use ('/company', companyRoutes)
 app.use('/', userRoutes);
 app.use('/hello', checkRoutes);
 app.use('/balancesheet', balanceSheetRoutes);
