@@ -24,7 +24,7 @@ Completed Routes: 8<br>
 - [x] Model - Yash
  - Controllers
    - [x] GET - Mohit
-   - [ ] GET by ID - Mohit
+   - [x] GET by ID - Mohit
    - [x] POST - Mohit
    - [ ] PUT - Mohit
    - [ ] DELETE - Mohit
@@ -51,8 +51,8 @@ Completed Routes: 8<br>
    - [x] GET by ID - Mohit
    - [x] Login - Mohit
    - [x] POST - Mohit
-   - [ ] PUT
-   - [ ] DELETE
+   - [ ] PUT - Mohit
+   - [ ] DELETE - Mohit
 ### Company
 - [x] Model - HV
 - Controllers
