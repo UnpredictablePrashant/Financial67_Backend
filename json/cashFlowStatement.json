@@ -1,0 +1,28 @@
+{
+    "companyId" : "1234",
+    "year": 2022,
+    "cash_equivalent_and_restricted_cash_at_the_beginning_of_year" : 35929,
+    "operating_activities": {
+         "net_income": 99803
+    },
+    "adjustment_for_non_cash_items" : {
+     "depreciation_and_amortization" : 11104,
+     "share_based_compensation_expense": 9038,
+     "other_item_1": 895,
+     "other_item_2": 111
+    },
+    "investing_activities": {
+     "net_sale_purchase_of_marketable_securities": -9560,
+     "capital_expenditure_purchase_of_ppe": -10708,
+     "business_acquisitions_net": -306,
+     "other_item_1": -1780,
+     "other_item_2": 0
+    },
+    "financing_activities": {
+     "dividends_and_equivalents": -14841,
+     "net_repurchase_of_common_stock": -89402,
+     "net_issuance_repayments_of_debt_and_commercial_paper": -123,
+     "other_item_1": -160,
+     "payments_for_taxes_related_to_net_share_settlement_of_equity_awards": -6223
+    }
+ }
