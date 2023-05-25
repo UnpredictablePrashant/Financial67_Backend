@@ -37,5 +37,37 @@ async function getCompanyById(req,res){
     .catch(err => res.send({message: "something went wrong"}))
 }
 
-module.exports= {CompanyRegistration,getAllCompany,getCompanyById}
+
+
+async function updateCompanyById(req, res) {
+    try {
+      const updatedCompany = await Company.findOneAndUpdate(
+        { id: req.params.id },
+        req.body,
+        { new: true, runValidators: true }
+      );
+      if (!updatedCompany) {
+        return res.status(404).json({ message: "Company Data not found" });
+      }
+      res.status(200).json(updatedCompany);
+    } catch (error) {
+      res.status(400).json({ message: "Error updating Company Data", error });
+    }
+  };
+  
+  async function deleteCompanyById(req, res) {
+    try {
+      const deleteCompany = await Company.findOneAndDelete({
+        companyId: req.params.id,
+      });
+      if (!deleteCompany) {
+        return res.status(404).json({ message: "Company Data not found" });
+      }
+      res.status(200).json({ message: "Company data deleted successfully" });
+    } catch (error) {
+      res.status(500).json({ message: "Error deleting Company data", error });
+    }
+  };
+
+module.exports= {CompanyRegistration,getAllCompany,getCompanyById, updateCompanyById, deleteCompanyById}
 

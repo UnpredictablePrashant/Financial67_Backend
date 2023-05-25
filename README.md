@@ -12,7 +12,7 @@ The project is part of the Capstone project by HeroVired. The project is created
 
 ## Stats
 Total No. of Routes: 38<br>
-Completed Routes: 29<br>
+Completed Routes: 31<br>
 
 
 ## Checklist
@@ -64,8 +64,8 @@ Completed Routes: 29<br>
    - [x] GET - Srinivas
    - [x] GET by ID - Srivinas
    - [x] POST - Srinivas
-   - [ ] PUT
-   - [ ] DELETE
+   - [x] PUT
+   - [x] DELETE
 
 ### Profitability Ratio
 - Controllers
