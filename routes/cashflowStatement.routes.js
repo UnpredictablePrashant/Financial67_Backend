@@ -1,8 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const { createCashflowStatement, getAllCashFlowStatements } = require("../controllers/cashflowStatement.controller");
+const { createCashflowStatement, getAllCashFlowStatements, getCashFlowStatementById, deleteCashflowStatementByCompanyId } = require("../controllers/cashflowStatement.controller");
 
 router.post("/create", createCashflowStatement);
 router.get("/", getAllCashFlowStatements);
+router.get('/:id', getCashFlowStatementById);
+router.put("/:companyId", updateCashflowStatementByCompanyId);
+router.delete("/:id", deleteCashflowStatementByCompanyId);
+
 
 module.exports = router;

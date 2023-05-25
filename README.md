@@ -37,10 +37,10 @@ Completed Routes: 23<br>
 - [x] Model - Chandrasekhar
 - Controllers
    - [x] GET - Chandrasekhar
-   - [ ] GET by ID - Chandrasekhar
+   - [x] GET by ID - HV
    - [x] POST - Chandrasekhar
-   - [ ] PUT
-   - [ ] DELETE
+   - [x] PUT - HV
+   - [x] DELETE - HV
 ### Confidential
 - [x] Model - Mohit
 - Controllers
