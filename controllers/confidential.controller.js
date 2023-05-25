@@ -67,3 +67,34 @@ exports.getConfidentialById = async (req, res) => {
     }
 
 }
+
+
+exports.updateConfidentialByCompanyId = async (req, res) => {
+    try {
+      const updatedConfidential = await Confidential.findOneAndUpdate(
+        { companyId: req.params.companyId },
+        req.body,
+        { new: true, runValidators: true }
+      );
+      if (!updatedConfidential) {
+        return res.status(404).json({ message: "Confidentials Data not found" });
+      }
+      res.status(200).json(updatedConfidential);
+    } catch (error) {
+      res.status(400).json({ message: "Error updating Confidentials Data", error });
+    }
+  };
+  
+  exports.deleteConfidentialByCompanyId = async (req, res) => {
+    try {
+      const deleteConfidential = await Confidential.findOneAndDelete({
+        companyId: req.params.companyId,
+      });
+      if (!deleteConfidential) {
+        return res.status(404).json({ message: "Confidentials Data not found" });
+      }
+      res.status(200).json({ message: "Confidentials data deleted successfully" });
+    } catch (error) {
+      res.status(500).json({ message: "Error deleting Confidentials data", error });
+    }
+  };

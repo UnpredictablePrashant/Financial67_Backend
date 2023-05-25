@@ -12,7 +12,7 @@ The project is part of the Capstone project by HeroVired. The project is created
 
 ## Stats
 Total No. of Routes: 38<br>
-Completed Routes: 23<br>
+Completed Routes: 29<br>
 
 
 ## Checklist
@@ -37,18 +37,18 @@ Completed Routes: 23<br>
 - [x] Model - Chandrasekhar
 - Controllers
    - [x] GET - Chandrasekhar
-   - [x] GET by ID - HV
+   - [x] GET by ID - Chandrasekhar
    - [x] POST - Chandrasekhar
-   - [x] PUT - HV
-   - [x] DELETE - HV
+   - [x] PUT - PK
+   - [x] DELETE - PK
 ### Confidential
 - [x] Model - Mohit
 - Controllers
    - [x] GET - Abhishek
-   - [ ] GET by ID - Abhishek
+   - [x] GET by ID - Abhishek
    - [x] POST - Abhishek
-   - [ ] PUT
-   - [ ] DELETE
+   - [x] PUT - PK
+   - [x] DELETE - PK
 ### User
 - [x] Model - Mohit
 - Controllers

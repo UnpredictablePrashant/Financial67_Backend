@@ -86,11 +86,11 @@ exports.updateCashflowStatementByCompanyId = async (req, res) => {
       { new: true, runValidators: true }
     );
     if (!updatedCashflowStatement) {
-      return res.status(404).json({ message: "Balance sheet not found" });
+      return res.status(404).json({ message: "Cashflow data not found" });
     }
     res.status(200).json(updatedCashflowStatement);
   } catch (error) {
-    res.status(400).json({ message: "Error updating balance sheet", error });
+    res.status(400).json({ message: "Error updating Cashflow data", error });
   }
 };
 
