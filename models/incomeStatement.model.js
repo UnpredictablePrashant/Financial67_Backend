@@ -4,8 +4,7 @@ const Schema = mongoose.Schema;
 const incomeStatementSchema = new Schema({
   companyId: {
     type: String,
-    unique:true,
-    require:true
+  
   },
   year: {
     type: Number,
