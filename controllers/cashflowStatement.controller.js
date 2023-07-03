@@ -1,51 +1,132 @@
-const BalanceSheet = require("../models/balancesheet.model");
 const CashflowStatement = require("../models/cashFlowStatement.model");
 
 exports.createCashflowStatement = async (req, res) => {
   try {
-    const {
-      companyId,
-      year,
-      cash_equivalent_and_restricted_cash_at_the_beginning_of_year,
-      operating_activities,
-      adjustment_for_non_cash_items,
-      investing_activities,
-      financing_activities,
-    } = req.body;
+    const cashFlowSheets = req.body.cashFlowSheets;
+    const companyId = req.body.companyId;
+   
+    const processedcashFlowsheets = cashFlowSheets.map(cashFlowsheet => {
+      console.log("cashflowsheet from FE ",cashFlowsheet);
+      const {
+        cash_equivalent_and_restricted_cash_at_the_beginning_of_year,
+        operating_activities,
+        adjustment_for_non_cash_items,
+        investing_activities,
+        financing_activities,
+      } = cashFlowsheet;
 
-    const total_cash_equivalent_and_restricted_cash_at_the_beginning_of_year =
-      Object.values(
-        cash_equivalent_and_restricted_cash_at_the_beginning_of_year
+      const total_cash_equivalent_and_restricted_cash_at_the_beginning_of_year =
+        Object.values(
+          cash_equivalent_and_restricted_cash_at_the_beginning_of_year
+        ).reduce((sum, value) => sum + parseFloat(value), 0);
+
+   
+      const total_operating_activities_netIncome = Object.values(
+        operating_activities
+      ).reduce((sum, value) => sum + parseFloat(value), 0);
+    
+      const total_adjustment_for_non_cash_items = Object.values(
+        adjustment_for_non_cash_items
       ).reduce((sum, value) => sum + parseFloat(value), 0);
 
-    const total_operating_activities = Object.values(
-      operating_activities
-    ).reduce((sum, value) => sum + parseFloat(value), 0);
+      const total_operating_activities = total_adjustment_for_non_cash_items + total_operating_activities_netIncome
 
-    const total_adjustment_for_non_cash_items = Object.values(
-      adjustment_for_non_cash_items
-    ).reduce((sum, value) => sum + parseFloat(value), 0);
+      const total_investing_activities = Object.values(
+        investing_activities
+      ).reduce((sum, value) => sum + parseFloat(value), 0);
 
-    const total_investing_activities = Object.values(
-      investing_activities
-    ).reduce((sum, value) => sum + parseFloat(value), 0);
+      const total_financing_activities = Object.values(
+        financing_activities
+      ).reduce((sum, value) => sum + parseFloat(value), 0);
 
-    const total_financing_activities = Object.values(
-      financing_activities
-    ).reduce((sum, value) => sum + parseFloat(value), 0);
 
-    const CashFlowStatementData = new CashflowStatement({
-      companyId,
-      year,
-      cash_equivalent_and_restricted_cash_at_the_beginning_of_year,
-      operating_activities,
-      adjustment_for_non_cash_items,
-      investing_activities,
-      financing_activities,
-    });
+      return {
+        ...cashFlowsheet,
+       
+       
+        total_operating_activities,
+        total_adjustment_for_non_cash_items,
+        total_investing_activities,
+        total_financing_activities
 
-    const newCashFlowStatement = await CashFlowStatementData.save();
-    res.status(201).json(newCashFlowStatement);
+      }
+    })
+
+
+
+
+    //checking for the existing incomestatement with given companyid
+    const existingcashFlowStatement = await CashflowStatement.findOne({ companyId });
+    if (existingcashFlowStatement) {
+      // If the income sheet already exists, update it with the new income sheets
+      existingcashFlowStatement.cashFlowSheets.push(...processedcashFlowsheets);
+      // existingcashFlowStatement.cashFlowSheets = existingcashFlowStatement.cashFlowSheets.concat(cashFlowSheets);
+
+      await existingcashFlowStatement.save();
+
+      res.status(200).json({
+        message: "CashFlow sheets updated successfully",
+        cashFlowSheets: existingcashFlowStatement,
+      });
+    } else {
+      // Calculate totals and perform other calculations for each balance sheet
+      // const processedcashFlowsheets = cashFlowSheets.map(cashFlowsheet => {
+      //   console.log("cashflowsheet from FE ",cashFlowsheet);
+      //   const {
+      //     cash_equivalent_and_restricted_cash_at_the_beginning_of_year,
+      //     operating_activities,
+      //     adjustment_for_non_cash_items,
+      //     investing_activities,
+      //     financing_activities,
+      //   } = cashFlowsheet;
+
+      //   const total_cash_equivalent_and_restricted_cash_at_the_beginning_of_year =
+      //     Object.values(
+      //       cash_equivalent_and_restricted_cash_at_the_beginning_of_year
+      //     ).reduce((sum, value) => sum + parseFloat(value), 0);
+
+     
+      //   const total_operating_activities_netIncome = Object.values(
+      //     operating_activities
+      //   ).reduce((sum, value) => sum + parseFloat(value), 0);
+      
+      //   const total_adjustment_for_non_cash_items = Object.values(
+      //     adjustment_for_non_cash_items
+      //   ).reduce((sum, value) => sum + parseFloat(value), 0);
+
+      //   const total_operating_activities = total_adjustment_for_non_cash_items + total_operating_activities_netIncome
+
+      //   const total_investing_activities = Object.values(
+      //     investing_activities
+      //   ).reduce((sum, value) => sum + parseFloat(value), 0);
+
+      //   const total_financing_activities = Object.values(
+      //     financing_activities
+      //   ).reduce((sum, value) => sum + parseFloat(value), 0);
+
+
+      //   return {
+      //     ...cashFlowsheet,
+         
+         
+      //     total_operating_activities,
+      //     total_adjustment_for_non_cash_items,
+      //     total_investing_activities,
+      //     total_financing_activities
+
+      //   }
+      // })
+      const createdCashFlowSheets = await CashflowStatement.create({
+        companyId,
+        cashFlowSheets: processedcashFlowsheets,
+      });
+
+      res.status(201).json({
+        message: "CashFlow sheets created successfully",
+        cashFlowSheets: createdCashFlowSheets,
+      });
+    }
+
   } catch (error) {
     console.log(error);
     res
