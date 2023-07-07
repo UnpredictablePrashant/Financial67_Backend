@@ -170,7 +170,8 @@ exports.getAllBalanceSheets = async (req, res) => {
 };
 exports.getBalanceSheetByCompanyId = async (req, res) => {
   try {
-    const balanceSheet = await BalanceSheet.findOne({ companyId: req.params.companyId });
+    console.log(req.params.id ,"company id");
+    const balanceSheet = await BalanceSheet.findOne({ companyId: req.params.id });
     if (!balanceSheet) {
       return res.status(404).json({ message: "Balance sheet not found" });
     }

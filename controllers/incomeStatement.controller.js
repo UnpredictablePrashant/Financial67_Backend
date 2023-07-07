@@ -145,8 +145,8 @@ exports.getAllIncomeStatements = async (req, res) => {
 
 exports.getIncomeStatementByCompanyId = async (req, res) => {
   try {
-    const { companyId } = req.params;
-    const incomeStatement = await IncomeStatement.findOne({ companyId });
+    const { id } = req.params;
+    const incomeStatement = await IncomeStatement.findOne({ companyId:id });
     if (!incomeStatement) {
       return res.status(404).json({ message: "Income statement not found" });
     }

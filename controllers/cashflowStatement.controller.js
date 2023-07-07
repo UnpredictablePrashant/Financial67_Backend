@@ -136,9 +136,12 @@ exports.createCashflowStatement = async (req, res) => {
 };
 
 exports.getCashFlowStatementById = async (req, res) => {
+  console.log("companyId:",req.params.id);
   try {
-    const CashFlowStatementById = await CashflowStatement.findById(
-      req.params.id
+    const CashFlowStatementById = await CashflowStatement.findOne({
+
+      companyId:req.params.id
+    }
     );
     res.status(200).json(CashFlowStatementById);
   } catch (error) {
