@@ -16,6 +16,12 @@ const cashFlowStatementSchema = new Schema({
             cash_equivalent_and_restricted_cash_at_the_beginning_of_year: {
                 type: Number,
             },
+            cash_equivalent_and_restricted_cash_at_the_end_of_year:{
+                type:Number,
+            },
+            totalCashFlow:{
+                type:Number
+            },
             total_operating_activities:{
                 type:Number
             },

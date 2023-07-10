@@ -9,10 +9,12 @@ exports.createCashflowStatement = async (req, res) => {
       console.log("cashflowsheet from FE ",cashFlowsheet);
       const {
         cash_equivalent_and_restricted_cash_at_the_beginning_of_year,
+        cash_equivalent_and_restricted_cash_at_the_end_of_year,
         operating_activities,
         adjustment_for_non_cash_items,
         investing_activities,
         financing_activities,
+        totalCashFlow
       } = cashFlowsheet;
 
       const total_cash_equivalent_and_restricted_cash_at_the_beginning_of_year =
