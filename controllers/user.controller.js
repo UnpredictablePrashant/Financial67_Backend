@@ -56,7 +56,7 @@ async function UserLogin(req,res){
                       res.cookie('token', jwtToken);
                       res.cookie('userid', result._id);
                     //   res.send(resultpayload);
-                    res.send({login: true,email:data.email})
+                    res.send({login: true})
                     } else {
                       res.status(400).send("Wrong Password");
                     }

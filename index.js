@@ -20,9 +20,7 @@ app.use('/', userRoutes);
 app.use('/hello', checkRoutes);
 app.use('/balancesheet', balanceSheetRoutes);
 app.use('/incomestatement', incomeStatementRoutes);
-
-// DEPRECATED : NOT IN USE
-// app.use('/confidential', confidentialRoutes);
+app.use('/confidential', confidentialRoutes);
 app.use('/cashflowstatement', cashflowStatementRoutes);
 app.use("/profitability", profitabilityRoutes);
 app.listen(process.env.PORT || 3001, () => {
