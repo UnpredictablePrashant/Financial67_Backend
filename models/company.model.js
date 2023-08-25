@@ -17,7 +17,7 @@ const companySchema = new Schema({
     companySector:{
         type: String,
     },
-    user:{
+    userId:{
         type: String,
         required: true 
     },

@@ -4,7 +4,7 @@ const { createIncomeStatement, getAllIncomeStatements, getIncomeStatementByCompa
 
 router.post("/create", createIncomeStatement);
 router.get("/", getAllIncomeStatements);
-router.get("/:companyId",getIncomeStatementByCompanyId);
+router.get("/:id",getIncomeStatementByCompanyId);
 
 // deleete an income statement by companyid
 router.delete("/:companyId", deleteIncomeStatementByCompanyId);
